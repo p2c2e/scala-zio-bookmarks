@@ -11,8 +11,16 @@
 1. Run it passing the bookmark filename. There is a *sample.html* file if you want to try it out.
     
         scala -jar ./target/scala-2.13/scala-zio-bookmarks-assembly-0.1.jar mybookmarks.html
+        
+    or
+    
+        java -jar ./target/scala-2.13/scala-zio-bookmarks-assembly-0.1.jar mybookmarks.html
+        
     The output of the run will result in the &lt;orig_name&gt;.out file. All the bad links should be moved into a folder called "INVALIDURLS"
     
+## The lazy path 
+The jar file (under target/scala-2.13/) is also checked into the repository. You will still need java/scala to run it.
+  
 ## Backstory 
 I have around 4000+ bookmarks collected over many years.
 I am pretty sure, I will not be visiting most of them - and most likely many of these website do not exist anymore...
