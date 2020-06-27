@@ -14,6 +14,7 @@ object ScalaBookmarksParser extends App {
     sys.exit(1)
   }
   val bookmarksFilename = args(0)
+  val parallelCheckCount = 50
 //  val bookmarksFilename = "scala-zio-bookmarks/bookmarks.html"
 
   case class UrlStatus(url: String, code: Int, message: String)
@@ -80,13 +81,13 @@ object ScalaBookmarksParser extends App {
         UIO.succeed(parseUrl(line))
       }
     }
-    checkedUrls <- ZIO.foreachParN(50)(allUrls.flatten) {
+    checkedUrls <- ZIO.foreachParN(parallelCheckCount)(allUrls.flatten) {
       url =>
         Task.effect(checkUrl(url))
     }
 
     validStatuses <- ZIO.filter(checkedUrls) {
-      urlstatus => Task.succeed(urlstatus.code == 200)
+      urlStatus => Task.succeed(urlStatus.code == 200)
     }
 
     validUrls <- Task.effect(validStatuses.map(s => s.url))

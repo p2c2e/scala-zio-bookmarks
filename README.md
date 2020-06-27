@@ -11,7 +11,7 @@
 1. Run it passing the bookmark filename. There is a *sample.html* file if you want to try it out.
     
         scala -jar ./target/scala-2.13/scala-zio-bookmarks-assembly-0.1.jar mybookmarks.html
-    The output of the run will result in the &lt;orig_name&gt;.out file
+    The output of the run will result in the &lt;orig_name&gt;.out file. All the bad links should be moved into a folder called "INVALIDURLS"
     
 ## Backstory 
 I have around 4000+ bookmarks collected over many years.
@@ -29,4 +29,4 @@ To validate this hypothesis (and as an excuse to write some code), I wrote this 
 * Going from sequential to parallel is only few chars of change
 * The 'underlying code' is normal code that gets wrapped in ZIO
 * While writing the code, it is clear what errors can crop up based on strong typing
-
+* God forbid, if you have more bookmarked sites than me, you may want to bump up the thread count toward the top of the file (currently set to 50)
