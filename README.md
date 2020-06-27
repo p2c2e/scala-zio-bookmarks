@@ -30,7 +30,7 @@ To validate this hypothesis (and as an excuse to write some code), I wrote this 
 ## What is interesting
 * The Bookmarks HTML format has been around for decades. It was invented by Nescape in early Internet years and is not well-formed HTML
 * Original attempt was to use JSoup library to parse and modify the HTML. This did not work - since Chrome (which I used to test), does not accept wellformed HTML - and usually silently ignores chunks of content.
-* There are very-few libraries to parse the bookmarks file format - and none in Java AFAIK
+* There are very-few libraries to parse the bookmarks file format - and none in Java AFAIK. So, this app just loads them as sequence of lines and processes them - no brains involved.
 * Since the work is network intensive and not CPU, the thought was to parallelize and speed up the checks
 
 ## Benefits of ZIO
