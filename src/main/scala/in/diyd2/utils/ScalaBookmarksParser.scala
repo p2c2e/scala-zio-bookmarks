@@ -71,10 +71,10 @@ object ScalaBookmarksParser extends App {
 
   val program = for {
 
-    allLines <- Task(scala.io.Source.fromFile(bookmarksFilename)).bracket(bs => URIO.effectTotal(bs.close())) {
+    allLines <- zio.blocking.blocking(Task(scala.io.Source.fromFile(bookmarksFilename)).bracket(bs => URIO.effectTotal(bs.close())) {
       bs =>
         Task.effect(bs.getLines().toList)
-    }
+    })
 
     allUrls <- ZIO.foreach(allLines) {
       line => {
@@ -83,7 +83,7 @@ object ScalaBookmarksParser extends App {
     }
     checkedUrls <- ZIO.foreachParN(parallelCheckCount)(allUrls.flatten) {
       url =>
-        Task.effect(checkUrl(url))
+        zio.blocking.blocking(Task.effect(checkUrl(url)))
     }
 
     validStatuses <- ZIO.filter(checkedUrls) {
