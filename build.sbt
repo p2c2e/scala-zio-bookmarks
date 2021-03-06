@@ -1,11 +1,12 @@
+
 name := "scala-zio-bookmarks"
 
-version := "0.1"
+version := "0.2"
 
 scalaVersion := "2.13.3"
 
 libraryDependencies += "org.jsoup" % "jsoup" % "1.13.1"
-libraryDependencies += "dev.zio" %% "zio" % "1.0.0-RC20"
+libraryDependencies += "dev.zio" %% "zio" % "1.0.4-2"
 
 //import sbtassembly.AssemblyKeys._
 
