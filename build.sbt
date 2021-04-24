@@ -10,4 +10,4 @@ libraryDependencies += "dev.zio" %% "zio" % "1.0.7"
 
 //import sbtassembly.AssemblyKeys._
 
-mainClass in assembly := Some("in.diyd2.utils.ScalaBookmarksParser")
+assembly / mainClass := Some("in.diyd2.utils.ScalaBookmarksParser")

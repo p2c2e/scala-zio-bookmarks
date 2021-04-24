@@ -2,19 +2,16 @@
 ## How to build the code
 0. Ensure you have Scala 2.13+ available
 1. Clone the code
-2. Build the code 
-    
-        sbt build
 1. Create the Uber-jar to run 
 
         sbt assembly
 1. Run it passing the bookmark filename. There is a *sample.html* file if you want to try it out.
     
-        scala -jar ./target/scala-2.13/scala-zio-bookmarks-assembly-0.1.jar mybookmarks.html
+        scala -jar ./target/scala-2.13/scala-zio-bookmarks-assembly-0.2.jar mybookmarks.html
         
     or
     
-        java -jar ./target/scala-2.13/scala-zio-bookmarks-assembly-0.1.jar mybookmarks.html
+        java -jar ./target/scala-2.13/scala-zio-bookmarks-assembly-0.2.jar mybookmarks.html
         
     The output of the run will result in the &lt;orig_name&gt;.out file. All the bad links should be moved into a folder called "INVALIDURLS"
     
